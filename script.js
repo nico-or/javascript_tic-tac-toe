@@ -22,8 +22,17 @@ const guiController = (() => {
     }
   };
 
+  const render = () => {
+    for (let index = 0; index < board.length; index++) {
+      const char = board[index];
+      const element = container.childNodes[index];
+      element.textContent = char;
+    }
+  };
+
   return {
     setUp,
+    render,
   };
 })();
 
