@@ -85,10 +85,15 @@ const gameBoard = (() => {
     return isFull() && !hasVictory();
   };
 
+  const isOver = () => {
+    return hasVictory() || isTie();
+  };
+
   return {
     board,
     addMove,
     isTie,
+    isOver,
   };
 })();
 
