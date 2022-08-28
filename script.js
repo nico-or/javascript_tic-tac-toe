@@ -1,5 +1,8 @@
 const gameBoard = (() => {
-  const board = [null, null, null, null, null, null, null, null, null];
+  const rowCount = 3;
+  const columnCount = 3;
+
+  const board = new Array(rowCount * columnCount).fill(null);
 
   const addMove = (index, char) => {
     if (board[index] != null) {
