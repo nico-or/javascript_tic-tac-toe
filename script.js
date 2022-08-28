@@ -4,6 +4,12 @@ const gameBoard = (() => {
 
   const board = new Array(rowCount * columnCount).fill(null);
 
+  const reset = () => {
+    for (let index = 0; index < board.length; index++) {
+      board[index] = null;
+    }
+  };
+
   const addMove = (index, char) => {
     if (board[index] != null) {
       return false;
@@ -91,6 +97,7 @@ const gameBoard = (() => {
 
   return {
     board,
+    reset,
     addMove,
     isTie,
     isOver,
