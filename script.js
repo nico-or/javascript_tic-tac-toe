@@ -54,6 +54,30 @@ const gameBoard = (() => {
     return output;
   };
 
+  const hasVictory = () => {
+    const isWinningArray = (array) => {
+      const allEqual = (array) => {
+        return array.every((e, i, arr) => e == arr[0]);
+      };
+      return allEqual(array) && array[0] != null;
+    };
+
+    let arraysToCheck = [];
+
+    for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
+      arraysToCheck.push(getRow(rowIndex));
+    }
+
+    for (let columnIndex = 0; columnIndex < columnCount; columnIndex++) {
+      arraysToCheck.push(getColumn(columnIndex));
+    }
+
+    arraysToCheck.push(getDiagonal());
+    arraysToCheck.push(getInverseDiagonal());
+
+    return arraysToCheck.some((array) => isWinningArray(array));
+  };
+
   return {
     board,
     addMove,
