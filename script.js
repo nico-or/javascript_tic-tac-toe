@@ -78,9 +78,17 @@ const gameBoard = (() => {
     return arraysToCheck.some((array) => isWinningArray(array));
   };
 
+  const isTie = () => {
+    const isFull = () => {
+      return board.every((e) => e != null);
+    };
+    return isFull() && !hasVictory();
+  };
+
   return {
     board,
     addMove,
+    isTie,
   };
 })();
 
