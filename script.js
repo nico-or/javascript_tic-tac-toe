@@ -32,6 +32,28 @@ const gameBoard = (() => {
     return output;
   };
 
+  // The board main diagonal is composed of the elements a[rowIndex, columnIndex]
+  // were rowIndex = columnIndex.
+  const getDiagonal = () => {
+    let output = [];
+    for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
+      let columnIndex = rowIndex;
+      output.push(board[columnIndex + columnCount * rowIndex]);
+    }
+    return output;
+  };
+
+  // The board inverse main diagonal is composed of the elements a[rowIndex, columnIndex]
+  // were rowIndex + columnIndex = columnCount - 1.
+  const getInverseDiagonal = () => {
+    let output = [];
+    for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
+      let columnIndex = columnCount - 1 - rowIndex;
+      output.push(board[columnIndex + columnCount * rowIndex]);
+    }
+    return output;
+  };
+
   return {
     board,
     addMove,
