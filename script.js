@@ -13,6 +13,25 @@ const gameBoard = (() => {
     }
   };
 
+  // Given a matrix A of size rowCount-by-columnCount, represented as
+  // an vector of size (rowCount * columnCount).
+  // The a[rowIndex, columnIndex] element is placed in the position (columnIndex + columnCount * rowIndex).
+  const getRow = (rowIndex) => {
+    let output = [];
+    for (let columnIndex = 0; columnIndex < columnCount; columnIndex++) {
+      output.push(board[columnIndex + columnCount * rowIndex]);
+    }
+    return output;
+  };
+
+  const getColumn = (columnIndex) => {
+    let output = [];
+    for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
+      output.push(board[columnIndex + columnCount * rowIndex]);
+    }
+    return output;
+  };
+
   return {
     board,
     addMove,
