@@ -42,6 +42,7 @@ const playerFactory = (name, char) => {
 };
 
 const gameController = (() => {
+  let currentTurn = 0;
   const players = [];
 
   const setPlayers = () => {
@@ -64,7 +65,7 @@ const gameController = (() => {
   };
 
   const inputHandler = (event) => {
-    console.log(event.target.dataset["index"]);
+    currentTurn++;
   };
 
   const init = () => {
