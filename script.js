@@ -1,3 +1,7 @@
+const playerFactory = (name, char) => {
+  return { name, char };
+};
+
 const gameBoard = (() => {
   const rowCount = 3;
   const columnCount = 3;
@@ -173,10 +177,6 @@ const guiController = (() => {
     drawEndGameMessage,
   };
 })();
-
-const playerFactory = (name, char) => {
-  return { name, char };
-};
 
 const gameController = (() => {
   let currentTurn = 0;
