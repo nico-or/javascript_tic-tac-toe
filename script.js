@@ -37,6 +37,10 @@ const guiController = (() => {
   };
 })();
 
+const playerFactory = (name, char) => {
+  return { name, char };
+};
+
 const gameController = (() => {
   const setInputListener = () => {
     const container = guiController.container;
