@@ -77,9 +77,12 @@ const gameController = (() => {
   const inputHandler = (event) => {
     let index = event.target.dataset["index"];
     let char = getCurrentPlayer().char;
-    gameBoard.addMove(index, char);
-    guiController.render();
-    currentTurn++;
+    let isValid = gameBoard.addMove(index, char);
+
+    if (isValid) {
+      currentTurn++;
+      guiController.render();
+    }
   };
 
   const init = () => {
