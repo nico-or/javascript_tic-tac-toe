@@ -50,6 +50,11 @@ const gameController = (() => {
     players.push(playerFactory("Player 2", "o"));
   };
 
+  const getCurrentPlayer = () => {
+    let index = currentTurn % players.length;
+    return players[index];
+  };
+
   const setInputListener = () => {
     const container = guiController.container;
     const cells = container.children;
@@ -65,6 +70,10 @@ const gameController = (() => {
   };
 
   const inputHandler = (event) => {
+    let index = event.target.dataset["index"];
+    let char = getCurrentPlayer().char;
+    gameBoard.addMove(index, char);
+    guiController.render();
     currentTurn++;
   };
 
