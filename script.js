@@ -115,12 +115,16 @@ const guiController = (() => {
     }
   };
 
-  const render = () => {
+  const drawBoard = () => {
     for (let index = 0; index < board.length; index++) {
       const char = board[index];
       const element = container.childNodes[index];
       element.textContent = char;
     }
+  };
+
+  const render = () => {
+    drawBoard();
   };
 
   return {
@@ -192,7 +196,7 @@ const gameController = (() => {
     setPlayers();
   };
 
-  return { init };
+  return { init, getCurrentPlayer };
 })();
 
 window.onload = () => {
