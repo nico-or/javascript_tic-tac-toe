@@ -161,8 +161,21 @@ const gameController = (() => {
     let isValid = gameBoard.addMove(index, char);
 
     if (isValid) {
-      currentTurn++;
       guiController.render();
+
+      if (gameBoard.isOver()) {
+        gameOver();
+      } else {
+        currentTurn++;
+      }
+    }
+  };
+
+  const gameOver = () => {
+    if (gameBoard.isTie()) {
+      console.log("is a tie!");
+    } else {
+      console.log(`player ${getCurrentPlayer().name} won.`);
     }
   };
 
