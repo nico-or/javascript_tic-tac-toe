@@ -42,6 +42,13 @@ const playerFactory = (name, char) => {
 };
 
 const gameController = (() => {
+  const players = [];
+
+  const setPlayers = () => {
+    players.push(playerFactory("Player 1", "x"));
+    players.push(playerFactory("Player 2", "o"));
+  };
+
   const setInputListener = () => {
     const container = guiController.container;
     const cells = container.children;
@@ -63,6 +70,7 @@ const gameController = (() => {
   const init = () => {
     guiController.setUp();
     setInputListener();
+    setPlayers();
   };
 
   return { init };
