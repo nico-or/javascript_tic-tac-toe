@@ -233,7 +233,9 @@ const gameController = (() => {
     setPlayers();
   };
 
-  return { init, getCurrentPlayer };
+  return {
+    init,
+  };
 })();
 
 window.onload = () => {
