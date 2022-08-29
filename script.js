@@ -36,6 +36,14 @@ const guiController = (() => {
   };
 })();
 
+const gameController = (() => {
+  const init = () => {
+    guiController.setUp();
+  };
+
+  return { init };
+})();
+
 window.onload = () => {
-  guiController.setUp();
+  gameController.init();
 };
