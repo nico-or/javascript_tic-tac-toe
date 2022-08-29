@@ -115,8 +115,15 @@ const guiController = (() => {
     }
   };
 
+  const setInfo = () => {
+    const infoContainer = document.getElementById("info");
+    infoContainer.textContent = "";
+    infoContainer.hidden = true;
+  };
+
   const setUp = () => {
     setBoard();
+    setInfo();
     render();
   };
 
@@ -128,6 +135,20 @@ const guiController = (() => {
     }
   };
 
+  const drawEndGameMessage = (currentPlayer) => {
+    const infoContainer = document.getElementById("info");
+    infoContainer.hidden = false;
+
+    let message = gameBoard.isTie()
+      ? "is a tie!"
+      : `${currentPlayer.name} won.`;
+
+    // game result
+    const p = document.createElement("p");
+    p.innerText = message;
+    infoContainer.appendChild(p);
+  };
+
   const render = () => {
     drawBoard();
   };
@@ -136,6 +157,7 @@ const guiController = (() => {
     container,
     setUp,
     render,
+    drawEndGameMessage,
   };
 })();
 
@@ -188,11 +210,7 @@ const gameController = (() => {
   };
 
   const gameOver = () => {
-    if (gameBoard.isTie()) {
-      console.log("is a tie!");
-    } else {
-      console.log(`player ${getCurrentPlayer().name} won.`);
-    }
+    guiController.drawEndGameMessage(getCurrentPlayer());
   };
 
   const init = () => {

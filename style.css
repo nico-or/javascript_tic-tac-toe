@@ -57,3 +57,10 @@ main {
 #board div:hover{
   background-color: var(--highlight-1);
 }
+
+#info {
+  background-color: var(--main-1);
+  color: var(--dark);
+  text-align: center;
+  padding: 0.5em 0;
+}
