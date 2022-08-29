@@ -31,14 +31,34 @@ const guiController = (() => {
   };
 
   return {
+    container,
     setUp,
     render,
   };
 })();
 
 const gameController = (() => {
+  const setInputListener = () => {
+    const container = guiController.container;
+    const cells = container.children;
+
+    for (let index = 0; index < cells.length; index++) {
+      const cell = cells[index];
+      cell.setAttribute("data-index", index);
+    }
+
+    container.addEventListener("click", (event) => {
+      inputHandler(event);
+    });
+  };
+
+  const inputHandler = (event) => {
+    console.log(event.target.dataset["index"]);
+  };
+
   const init = () => {
     guiController.setUp();
+    setInputListener();
   };
 
   return { init };
