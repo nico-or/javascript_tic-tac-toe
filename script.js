@@ -2,7 +2,12 @@ const gameBoard = (() => {
   const board = [null, null, null, null, null, null, null, null, null];
 
   const addMove = (index, char) => {
-    board[index] = char;
+    if (board[index] != null) {
+      return false;
+    } else {
+      board[index] = char;
+      return true;
+    }
   };
 
   return {
