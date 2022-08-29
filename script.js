@@ -109,6 +109,10 @@ const guiController = (() => {
   const container = document.getElementById("board");
 
   const setBoard = () => {
+    // clear board
+    container.innerText = "";
+
+    // populate board
     for (let index = 0; index < board.length; index++) {
       const element = document.createElement("div");
       container.appendChild(element);
@@ -147,6 +151,15 @@ const guiController = (() => {
     const p = document.createElement("p");
     p.innerText = message;
     infoContainer.appendChild(p);
+
+    // reset button
+    const button = document.createElement("button");
+    button.innerText = "play agin";
+    infoContainer.appendChild(button);
+
+    button.addEventListener("click", () => {
+      gameController.init();
+    });
   };
 
   const render = () => {
@@ -214,6 +227,7 @@ const gameController = (() => {
   };
 
   const init = () => {
+    gameBoard.reset();
     guiController.setUp();
     setInputListener();
     setPlayers();
